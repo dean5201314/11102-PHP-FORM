@@ -40,17 +40,47 @@ $files=all('files');
             <td>大小</td>
             <td>描述</td>
             <td>上傳時間</td>
+            <td>操作</td>
         </tr>
     <?php
     foreach($files as $file){
+        switch($file['type']){
+            case "image/webp":
+            case "image/jpeg":
+            case "image/png":
+            case "image/gif":
+            case "image/bmp":
+                $imgname="./imgs/".$file['name'];
+            break;
+            case 'msword':
+                $imgname="./icon/wordicon.png";
+            break;
+            case 'msexcel':
+                $imgname="./icon/msexcel.png";
+            break;
+            case 'msppt':
+                $imgname="./icon/msppt.png";
+            break;
+            case 'pdf':
+                $imgname="./icon/pdf.png";
+            break;
+            default:
+                $imgname="./icon/other.png";
+
+        }
     ?>
         <tr>
             <td><?=$file['id'];?></td>
-            <td><?=$file['name'];?></td>
+            <td><img class='thumbs' src="<?=$imgname;?>"></td>
             <td><?=$file['type'];?></td>
             <td><?=$file['size'];?></td>
             <td><?=$file['desc'];?></td>
             <td><?=$file['create_at'];?></td>
+            <td>
+                <button class="btn btn-info" onclick="location.href='./edit_file.php?id=<?=$file['id'];?>'">編輯</button>
+                <!-- <button class="btn btn-danger"><a href='./api/del_file.php?id=<?//=$file['id'];?>'>刪除</a></button> -->
+                <button class="btn btn-danger" onclick="location.href='./api/del_file.php?id=<?=$file['id'];?>'">刪除</button>
+            </td>
         </tr>
     <?php
     }
