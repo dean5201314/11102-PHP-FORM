@@ -13,6 +13,7 @@
  * 驗證碼的部份可以指定長度也可以由函式亂數決定
  * 回傳值 :string
  */
+// echo code(8)."<br>";    //測試產生驗證碼函式
 
 function code(...$length){
   
@@ -192,6 +193,6 @@ function captcha($str){
 
 <img src="<?=captcha (code(5));?>" alt="" style="border:2px solid green">
 
-
+<!-- <img src="<?=captcha (code());?>" alt=""> -->
 </body>
 </html>
