@@ -23,7 +23,6 @@ echo "<a href='./doc/{$filename}.csv'  download>檔案已匯出，請點此連�
 
 
 ?>
-
 <style>
     table{
         border-collapse: collapse;
@@ -39,14 +38,11 @@ echo "<a href='./doc/{$filename}.csv'  download>檔案已匯出，請點此連�
         color:white;
     }
 </style>
-<script src="./jquery-3.4.1.min.js"></script>
 <form action="?" method="post">
     <input type="submit" value="匯出選擇的資料">
 <table>
     <tr>
-        <th>
-            <input type="checkbox" name="" id="select">
-            勾選</th>
+        <th>勾選</th>
         <th>投票所編號</th>
         <th>投票所</th>
         <th>候選人1</th>
@@ -83,14 +79,3 @@ foreach($rows as $row){
 ?>
 </table>
 </form>
-
-
-<script>
-$("#select").on("change",function(){
-    if($(this).prop('checked')){
-        $("input[name='select[]']").prop('checked',true);
-    }else{
-        $("input[name='select[]']").prop('checked',false);
-    }
-})
-</script>
